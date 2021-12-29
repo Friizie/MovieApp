@@ -67,7 +67,7 @@
 
             <Button
                 android:id="@+id/two"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="2"
                 android:textColor="@color/white"
@@ -80,7 +80,7 @@
 
             <Button
                 android:id="@+id/one"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="1"
                 android:textColor="@color/white"
@@ -93,7 +93,7 @@
 
             <Button
                 android:id="@+id/three"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="3"
                 android:textColor="@color/white"
@@ -106,7 +106,7 @@
 
             <Button
                 android:id="@+id/four"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="4"
                 android:textColor="@color/white"
