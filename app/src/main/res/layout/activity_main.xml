@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+<!--        <TextView-->
+<!--            android:id="@+id/toWatch"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginEnd="7dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="TO WATCH"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="14sp"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true" />-->
+<!--        -->
+<!--        <TextView-->
+<!--            android:id="@+id/watched"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center"-->
+<!--            android:text="WATCHED"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="14sp"-->
+<!--            android:layout_marginStart="7dp"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true" />-->
+
+        <Button
+            android:id="@+id/toWatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="To Watch"
+            android:background="@android:color/transparent"
+            android:textColor="@color/white"
+            />
+<!--    android:layout_marginEnd="5dp"    -->
+        <Button
+            android:id="@+id/watched"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Watched"
+            android:background="@android:color/transparent"
+            android:textColor="@color/white"
+            />
+<!--        android:layout_marginStart="5dp"-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="43dp"
+        >
+        <View
+            android:id="@+id/rectangle1"
+            android:layout_width="112dp"
+            android:layout_height="3dp"
+            android:background="@color/purple_500"
+            android:visibility="visible"
+            android:animateLayoutChanges="true"
+            />
+        <View
+            android:id="@+id/rectangle2"
+            android:layout_width="108dp"
+            android:layout_height="3dp"
+            android:background="@color/purple_500"
+            android:visibility="invisible"
+            android:animateLayoutChanges="true"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/MContent"
+        android:layout_width="match_parent"
+        android:layout_height="681dp"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        app:layout_anchorGravity="center">
+
+        <ScrollView
+            android:id="@+id/MainContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+            </androidx.recyclerview.widget.RecyclerView>
+        </ScrollView>
+    </LinearLayout>
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="60dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_marginTop="600dp"-->
+<!--        android:layout_marginStart="320dp">-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/AddMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="100dp">
+<!--        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.629"-->
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/BottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/BottomNavView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="0dp"
+            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+            app:menu="@menu/bottom_nav_menu">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
