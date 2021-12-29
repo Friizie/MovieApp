@@ -23,10 +23,9 @@ public class TriviaActivity extends AppCompatActivity {
     TextView displayedQuestion,questionNum;
     ImageView displayedImage;
     Trivia t;
-    int questionIndex = -1, totalPoints=0;
-    int answer,totalq;
+    int questionIndex = -1, totalPoints = 0, difficulty = 0;
+    int answer,totalq, NUM_OF_QUESTIONS = 10;
     NavigationBarView navBarTrivia;
-    int difficulty = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +85,18 @@ public class TriviaActivity extends AppCompatActivity {
     void update() {
         if(isNextQuestion()) {
             displayedQuestion.setText(getCurrentQuestion().getQuestion());
-            displayedImage.setImageResource(getCurrentQuestion().getImage());
-            String num = (questionIndex+1) + "/" + totalq;
+            if(getCurrentQuestion().getImage()==0) {
+                displayedImage.setVisibility(View.INVISIBLE);
+                displayedImage.getLayoutParams().width = 0;
+                displayedImage.getLayoutParams().height = 0;
+            }
+            else {
+                displayedImage.setVisibility(View.VISIBLE);
+                displayedImage.getLayoutParams().width = 200;
+                displayedImage.getLayoutParams().height = 200;
+                displayedImage.setImageResource(getCurrentQuestion().getImage());
+            }
+            String num = (questionIndex+1) + "/" + NUM_OF_QUESTIONS;
             questionNum.setText(num);
 
             b1.setText(getCurrentQuestion().getAnswers().get(0));
@@ -136,7 +145,7 @@ public class TriviaActivity extends AppCompatActivity {
 
     // display if the picked answer was correct or not. Also go to next question.
     void Answer() {
-        if(questionIndex==(totalq-1)) { finished(); return; }
+        if(questionIndex==NUM_OF_QUESTIONS-1) { finished(); return; }
         if(isNextQuestion()) {
             if (check(answer)) {
                 Toast.makeText(this,"Correct",Toast.LENGTH_SHORT).show();
@@ -205,25 +214,19 @@ public class TriviaActivity extends AppCompatActivity {
     // setting the questions
     public void setTrivia() {
         t = new Trivia();
-        ArrayList<String> answers;
-        answers = setAnswers("Joe Mama","HueHueHue","asd","h");
-        t.addQuestion(new Question("Who is Joe?",answers,1,1,5,R.drawable.q1));
+//        ArrayList<String> answers;
+//
+//        answers = setAnswers("Answer 1","Answer 2","Answer 3","Answer 4");
+//        t.addQuestion(new Question("Question?", answers,1,1,5,R.drawable.qmark));
+//                                            // question // list // correct // 0,1,2 poeni // sllika
+//        answers = setAnswers("The Wolf Of Wall Street","Ride along","Sudden impact","The day the earth stood still");
+//        t.addQuestion(new Question("\"Go ahead, make my day.\"",answers,3,2,5,R.drawable.qmark));
+//
+//        answers = setAnswers("","","","");
+//        t.addQuestion(new Question("",answers,0,2,5,R.drawable.qmark));
+//
 
-        answers = setAnswers("Тралејца", "Тролито", "Бот","Креки");
-        t.addQuestion(new Question("Кој е на сликата?",answers,3,0,10,R.drawable.mkoo));
-
-        answers = setAnswers("Дон Корлеоне","Tатичко","Тони Монтана","Шварценегер");
-        t.addQuestion(new Question("Кој е на сликата?",answers,9,0,100,R.drawable.taticko));
-
-        answers = setAnswers("Zura","prasha","nikoj","koj?");
-        t.addQuestion(new Question("Koj?",answers,2,0,12,R.drawable.trollito));
-
-        answers = setAnswers("Гуштер","Глушец","Вонземјанин","Некое бате");
-        t.addQuestion(new Question("Што е ова?",answers,1,0,10,R.drawable.ttet));
-
-        answers = setAnswers("ich möchte sterben","zwei Jungen","HEIL","Etwas");
-        t.addQuestion(new Question("Was ist das?",answers,3,0,7,R.drawable.hail));
-
+        t.initQuestions();
         t.shuffleQuestions();
         difficulty();
         t.questionsByDifficulty(difficulty);
