@@ -2,13 +2,13 @@ package com.example.movieapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +23,9 @@ public class TriviaActivity extends AppCompatActivity {
     int questionIndex = -1, totalPoints = 0, difficulty = 0;
     int answer, totalq, NUM_OF_QUESTIONS = 10;
     NavigationBarView navBarTrivia;
+    int     SELECTED_COLOUR = Color.parseColor("#b80000"),          // crvena
+            CORRECT_ANSWER_COLOUR = Color.parseColor("#00a616"),    // zelena
+            DEFAULT_COLOUR = Color.parseColor("#FF6200EE");         // default violetova
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,16 +85,24 @@ public class TriviaActivity extends AppCompatActivity {
 
     // update function for updating screen information
     void update() {
+        try{Thread.sleep(500);} catch (Exception e) {System.out.println(e.toString());}
+        b1.setBackgroundColor(DEFAULT_COLOUR);
+        b2.setBackgroundColor(DEFAULT_COLOUR);
+        b3.setBackgroundColor(DEFAULT_COLOUR);
+        b4.setBackgroundColor(DEFAULT_COLOUR);
+
         if (isNextQuestion()) {
             displayedQuestion.setText(getCurrentQuestion().getQuestion());
             if (getCurrentQuestion().getImage() == 0) {
                 displayedImage.setVisibility(View.INVISIBLE);
                 displayedImage.getLayoutParams().width = 0;
                 displayedImage.getLayoutParams().height = 0;
+                displayedImage.requestLayout();
             } else {
                 displayedImage.setVisibility(View.VISIBLE);
                 displayedImage.getLayoutParams().width = 200;
                 displayedImage.getLayoutParams().height = 200;
+                displayedImage.requestLayout();
                 displayedImage.setImageResource(getCurrentQuestion().getImage());
             }
             String num = (questionIndex + 1) + "/" + NUM_OF_QUESTIONS;
@@ -146,21 +157,36 @@ public class TriviaActivity extends AppCompatActivity {
 
     // display if the picked answer was correct or not. Also go to next question.
     void Answer() {
-        if (questionIndex == NUM_OF_QUESTIONS - 1) {
-            finished();
-            return;
-        }
+        if (questionIndex == NUM_OF_QUESTIONS - 1) { finished(); return; }
         if (isNextQuestion()) {
             if (check(answer)) {
-                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
-                // ovde mozda nesto
-                // da se smenet boine na kopcinjana i posle 2 sec da ojt na sledno
-                // namesto ova
+//                switch (answer){
+//                    case 1: b1.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
+//                    case 2: b2.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
+//                    case 3: b3.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
+//                    case 4: b4.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
+//                }
+//                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
                 totalPoints += getCurrentQuestion().getPoints();
             } else {
-                String a = "The correct answer was " + getAnswer() + ": " + getCurrentQuestion().getRightAnswerString().toUpperCase();
-                Toast.makeText(this, "Incorrect", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, a, Toast.LENGTH_SHORT).show();
+                switch (answer) {
+                    // https://stackoverflow.com/questions/18712955/i-want-to-change-the-color-of-a-button-for-a-few-seconds-than-change-it-back
+                    // ova ke se probat
+                    case 1: b1.setBackgroundColor(SELECTED_COLOUR);break;
+                    case 2: b2.setBackgroundColor(SELECTED_COLOUR);break;
+                    case 3: b3.setBackgroundColor(SELECTED_COLOUR);break;
+                    case 4: b4.setBackgroundColor(SELECTED_COLOUR);break;
+                    default: break;
+                }
+//                String a = "Incorrect\n"+"The correct answer was " + getAnswer() + ": " + getCurrentQuestion().getRightAnswerString().toUpperCase();
+//                Toast.makeText(this, a, Toast.LENGTH_SHORT).show();
+            }
+            switch (getCurrentQuestion().getRightAnswer()) {
+                case 1: b1.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
+                case 2: b2.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
+                case 3: b3.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
+                case 4: b4.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
+                default: break;
             }
             nextQuestion();
             update();
