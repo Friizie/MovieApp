@@ -276,7 +276,7 @@ public class Trivia {
                 answers,2,2,5,0));
 
         answers = setAnswers("Frankenstein","Zombieland","Mad Max: Fury Road","In Time");
-        addQuestion(new Question("",
+        addQuestion(new Question("\"I live, I die. I LIVE AGAIN!\"",
                 answers,3,2,5,0));
 
         answers = setAnswers("The Jazz Singer","Finding Nemo","Pulp Fiction","Whiplash");
@@ -470,7 +470,7 @@ public class Trivia {
                 answers,4,0,5,0));
 
         answers = setAnswers("American Pie","The Avengers: Age of Ultron","A Streetcar Named Desire","Cars");
-        addQuestion(new Question("\"There are no strings on me",
+        addQuestion(new Question("\"There are no strings on me\"",
                 answers,2,0,5,0));
 
         answers = setAnswers("Kung Fu Panda","Cars","Little Caesar","Terminator 2: Judgment Day");
@@ -652,6 +652,6 @@ public class Trivia {
 
         answers = setAnswers("Wolf of Wall Street","The Avengers: Endgame","Love","Harry Potter");
         addQuestion(new Question("\"Always\"",
-                answers,1,0,5,0));
+                answers,4,0,5,0));
     }
 }
