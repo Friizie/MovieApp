@@ -15,16 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class TriviaActivity extends AppCompatActivity {
-    Button b1,b2,b3,b4;
-    TextView displayedQuestion,questionNum;
+    Button b1, b2, b3, b4;
+    TextView displayedQuestion, questionNum;
     ImageView displayedImage;
     Trivia t;
     int questionIndex = -1, totalPoints = 0, difficulty = 0;
-    int answer,totalq, NUM_OF_QUESTIONS = 10;
+    int answer, totalq, NUM_OF_QUESTIONS = 10;
     NavigationBarView navBarTrivia;
 
     @Override
@@ -45,6 +42,7 @@ public class TriviaActivity extends AppCompatActivity {
         overridePendingTransition(0, 0);
         this.finish();
     }
+
     // button listeners setup function
     void setUpClicks() {
         b1 = (Button) findViewById(R.id.one);
@@ -81,22 +79,22 @@ public class TriviaActivity extends AppCompatActivity {
             }
         });
     }
+
     // update function for updating screen information
     void update() {
-        if(isNextQuestion()) {
+        if (isNextQuestion()) {
             displayedQuestion.setText(getCurrentQuestion().getQuestion());
-            if(getCurrentQuestion().getImage()==0) {
+            if (getCurrentQuestion().getImage() == 0) {
                 displayedImage.setVisibility(View.INVISIBLE);
                 displayedImage.getLayoutParams().width = 0;
                 displayedImage.getLayoutParams().height = 0;
-            }
-            else {
+            } else {
                 displayedImage.setVisibility(View.VISIBLE);
                 displayedImage.getLayoutParams().width = 200;
                 displayedImage.getLayoutParams().height = 200;
                 displayedImage.setImageResource(getCurrentQuestion().getImage());
             }
-            String num = (questionIndex+1) + "/" + NUM_OF_QUESTIONS;
+            String num = (questionIndex + 1) + "/" + NUM_OF_QUESTIONS;
             questionNum.setText(num);
 
             b1.setText(getCurrentQuestion().getAnswers().get(0));
@@ -122,14 +120,17 @@ public class TriviaActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.mHome:
-                        startActivity(new Intent(TriviaActivity.this,MainActivity.class)
+                        startActivity(new Intent(TriviaActivity.this, MainActivity.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        finish(); break;
+                        finish();
+                        break;
                     case R.id.mCalendar:
-                        startActivity(new Intent(TriviaActivity.this,CalendarActivity.class)
+                        startActivity(new Intent(TriviaActivity.this, CalendarActivity.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                        finish(); break;
-                    case R.id.mTrivia: break;
+                        finish();
+                        break;
+                    case R.id.mTrivia:
+                        break;
                 }
                 return true;
             }
@@ -145,17 +146,20 @@ public class TriviaActivity extends AppCompatActivity {
 
     // display if the picked answer was correct or not. Also go to next question.
     void Answer() {
-        if(questionIndex==NUM_OF_QUESTIONS-1) { finished(); return; }
-        if(isNextQuestion()) {
+        if (questionIndex == NUM_OF_QUESTIONS - 1) {
+            finished();
+            return;
+        }
+        if (isNextQuestion()) {
             if (check(answer)) {
-                Toast.makeText(this,"Correct",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
                 // ovde mozda nesto
                 // da se smenet boine na kopcinjana i posle 2 sec da ojt na sledno
                 // namesto ova
-                totalPoints+=getCurrentQuestion().getPoints();
+                totalPoints += getCurrentQuestion().getPoints();
             } else {
                 String a = "The correct answer was " + getAnswer() + ": " + getCurrentQuestion().getRightAnswerString().toUpperCase();
-                Toast.makeText(this,"Incorrect",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Incorrect", Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, a, Toast.LENGTH_SHORT).show();
             }
             nextQuestion();
@@ -165,7 +169,7 @@ public class TriviaActivity extends AppCompatActivity {
 
     // get the right answer
     public int getAnswer() {
-        if(isNextQuestion())
+        if (isNextQuestion())
             return getCurrentQuestion().getRightAnswer();
         return -1;
     }
@@ -177,22 +181,17 @@ public class TriviaActivity extends AppCompatActivity {
 
     // check if there is next question (test)
     boolean isNextQuestion() {
-        return t.getSelectedQuestions().size()!=questionIndex;
+        return t.getSelectedQuestions().size() != questionIndex;
     }
 
     //get the current question
     Question getCurrentQuestion() {
-        if(isNextQuestion())
+        if (isNextQuestion())
             return t.getSelectedQuestions().get(questionIndex);
         return new Question();
     }
 
-    // helper function for easier setup
-    private ArrayList<String> setAnswers(String one, String two, String three, String four){
-        return new ArrayList<>(Arrays.asList(one,two,three,four));
-    }
-
-
+    // get difficulty from previous screen
     void difficulty() {
         Bundle bundle = getIntent().getExtras();
         difficulty = bundle.getInt("difficulty");
@@ -204,9 +203,9 @@ public class TriviaActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putInt("score", totalPoints);
 
-        startActivity(new Intent(TriviaActivity.this,EndTrivia.class)
-                        .putExtras(bundle)
-                        .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+        startActivity(new Intent(TriviaActivity.this, EndTrivia.class)
+                .putExtras(bundle)
+                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
         finish();
     }
 
@@ -214,18 +213,9 @@ public class TriviaActivity extends AppCompatActivity {
     // setting the questions
     public void setTrivia() {
         t = new Trivia();
-//        ArrayList<String> answers;
-//
-//        answers = setAnswers("Answer 1","Answer 2","Answer 3","Answer 4");
-//        t.addQuestion(new Question("Question?", answers,1,1,5,R.drawable.qmark));
-//                                            // question // list // correct // 0,1,2 poeni // sllika
-//        answers = setAnswers("The Wolf Of Wall Street","Ride along","Sudden impact","The day the earth stood still");
-//        t.addQuestion(new Question("\"Go ahead, make my day.\"",answers,3,2,5,R.drawable.qmark));
-//
 //        answers = setAnswers("","","","");
 //        t.addQuestion(new Question("",answers,0,2,5,R.drawable.qmark));
 //
-
         t.initQuestions();
         t.shuffleQuestions();
         difficulty();

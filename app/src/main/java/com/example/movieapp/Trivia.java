@@ -57,7 +57,7 @@ public class Trivia {
         selectedquestions = list;
     }
 
-
+    // helper function for easier setup
     private ArrayList<String> setAnswers(String one, String two, String three, String four){
         return new ArrayList<>(Arrays.asList(one,two,three,four));
     }

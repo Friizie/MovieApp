@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+
+
+// TODO da se zavrsit adapterov i drugiot da se naprajt
 public class MovieListAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     ArrayList<Movie> items;
