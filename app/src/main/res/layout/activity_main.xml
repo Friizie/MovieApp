@@ -90,18 +90,12 @@
         android:orientation="vertical"
         android:layout_marginTop="50dp"
         app:layout_anchorGravity="center">
-
-        <ScrollView
-            android:id="@+id/MainContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
             </androidx.recyclerview.widget.RecyclerView>
-        </ScrollView>
     </LinearLayout>
 <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--        android:layout_width="60dp"-->

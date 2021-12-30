@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     int i=0;
     RecyclerView recyclerView;
     MovieListAdapter adapter = new MovieListAdapter();
+    boolean left = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +80,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                bar2.setVisibility(View.INVISIBLE);
 //                bar1.setVisibility(View.VISIBLE);
-                bar1.animate().translationX(0).setDuration(250);
+                bar1.animate().translationX(0).setDuration(200);
+                left=true;
             }
         });
         watchedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bar1.animate().translationX(bar1.getWidth()).setDuration(250);
+                bar1.animate().translationX(bar1.getWidth()).setDuration(200);
+                left = false;
 //                bar1.setVisibility(View.INVISIBLE);
 //                bar2.setVisibility(View.VISIBLE);
             }
@@ -94,7 +97,8 @@ public class MainActivity extends AppCompatActivity {
         addMovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,AddMovie.class));
+                startActivity(new Intent(MainActivity.this, AddMovie.class)
+                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                 watched.add(new Movie(i++ + ""));
             }
         });
@@ -125,6 +129,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         adapter.submitList(watched);
+    }
+
+    void doSomethingIdk() {
+        if(left) {
+
+        }
+        else {
+
+        }
     }
 
 }
