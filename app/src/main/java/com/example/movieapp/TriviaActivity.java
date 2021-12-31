@@ -33,7 +33,7 @@ public class TriviaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
-        navInit();
+        init();
         setTrivia();
         setUpClicks();
         nextQuestion();
@@ -137,7 +137,7 @@ public class TriviaActivity extends AppCompatActivity {
     }
 
     //initializer function
-    void navInit() {
+    void init() {
         displayedQuestion = (TextView) findViewById(R.id.questionTV);
         displayedImage = findViewById(R.id.imageIV);
         questionNum = findViewById(R.id.questionNum);

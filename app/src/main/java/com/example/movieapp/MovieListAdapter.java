@@ -13,9 +13,27 @@ import java.util.ArrayList;
 
 
 // TODO da se zavrsit adapterov i drugiot da se naprajt
-public class MovieListAdapter extends RecyclerView.Adapter<MovieViewHolder> {
-
+public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieViewHolder> {
     ArrayList<Movie> items;
+
+    public MovieListAdapter(ArrayList<Movie> items){
+        this.items=items;
+    }
+    public class MovieViewHolder extends RecyclerView.ViewHolder {
+        View itemView;
+        TextView title,year;
+
+        public MovieViewHolder(@NonNull View itemView) {
+            super(itemView);
+            title = (TextView) itemView.findViewById(R.id.movieTitle);
+            year =  (TextView) itemView.findViewById(R.id.movieYear);
+        }
+
+        public void bind(Movie m) {
+            title.setText(m.getTitle());
+            year.setText(m.getYear());
+        }
+    }
 
     @NonNull
     @Override
@@ -26,8 +44,10 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
-        holder.bind(items.get(position));
+    public void onBindViewHolder(@NonNull MovieListAdapter.MovieViewHolder holder, int position) {
+//        holder.bind(items.get(position));
+        holder.title.setText(items.get(position).getTitle());
+        holder.year.setText(items.get(position).getYear()+"");
     }
 
 
@@ -41,18 +61,4 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     }
 }
 
-class MovieViewHolder extends RecyclerView.ViewHolder {
-    View itemView;
-    TextView title,year;
 
-    public MovieViewHolder(@NonNull View itemView) {
-        super(itemView);
-        title = (TextView) itemView.findViewById(R.id.movieTitle);
-        year =  (TextView) itemView.findViewById(R.id.movieYear);
-    }
-
-    public void bind(Movie m) {
-        title.setText(m.getTitle());
-        year.setText(m.getYear());
-    }
-}

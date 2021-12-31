@@ -98,4 +98,13 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + TABLE_NAME);
     }
 
+    void createMovieListTable(SQLiteDatabase db) {
+        String query = "CREATE TABLE " + "TO_WATCH_LIST" +
+                " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "TITLE" + " TEXT, " +
+                "YEAR" + " INT, " +
+                COLUMN_DATE + " TEXT);";
+        db.execSQL(query);
+    }
+
 }
