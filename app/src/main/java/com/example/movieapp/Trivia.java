@@ -49,32 +49,91 @@ public class Trivia {
 
     void questionsByDifficulty(int dif) {
         ArrayList<Question> list = new ArrayList<>();
-        for (Question q : questions) {
-            if(q.getDifficulty() == dif) {
-                list.add(q);
+        switch (dif){
+            case 0:
+                for (Question q : questions) {
+                    if (q.getDifficulty() == dif) {
+                        list.add(q);
+                    }
+                }
+                break;
+            case 1:
+                for (Question q : questions) {
+                if(q.getDifficulty() != 2)
+                    list.add(q);
             }
+                break;
+            case 2:
+                for (Question q : questions) {
+                    if(q.getDifficulty() == 2)
+                        list.add(q);
+                }
+                break;
+            default: selectedquestions = questions;
         }
+
+//        for (Question q : questions) {
+//            if(q.getDifficulty() == dif) {
+//                list.add(q);
+//            }
+//        }
         selectedquestions = list;
     }
 
     // helper function for easier setup
     private ArrayList<String> setAnswers(String one, String two, String three, String four){
-        return new ArrayList<>(Arrays.asList(one,two,three,four));
+        return new ArrayList<>(Arrays.asList(one.toLowerCase(),two.toLowerCase(),three.toLowerCase(),four.toLowerCase()));
     }
+
+    private ArrayList<String> setAnswers(String[] answers) {
+        for (int i=0;i<answers.length;i++){
+            answers[i] = answers[i].toLowerCase().replaceAll(" +","");
+        }
+        return new ArrayList<>(Arrays.asList(answers));
+    }
+
 
     void initQuestions() {
         ArrayList<String> answers;
 
+        answers = setAnswers("someone","5","6","5");
+        addQuestion(new Question("who",answers,1,0,5,"https://en.wikipedia.org/wiki/File:1990_Venice_Film_Festival_Robert_De_Niro.jpg"));
+        answers = setAnswers("someone","5","6","5");
+        addQuestion(new Question("who",answers,1,0,5,"https://en.wikipedia.org/wiki/File:1990_Venice_Film_Festival_Robert_De_Niro.jpg"));
+        answers = setAnswers("someone","5","6","5");
+        addQuestion(new Question("who",answers,1,0,5,"https://en.wikipedia.org/wiki/File:1990_Venice_Film_Festival_Robert_De_Niro.jpg"));
+        answers = setAnswers("someone","5","6","5");
+        addQuestion(new Question("who",answers,1,0,5,"https://en.wikipedia.org/wiki/File:1990_Venice_Film_Festival_Robert_De_Niro.jpg"));
+
 //        answers = setAnswers("Answer 1","Answer 2","Answer 3","Answer 4");
-//        addQuestion(new Question("Question?", answers,1,1,5,R.drawable.qmark));
+//        addQuestion(new Question("Question?", answers,1,2,5,R.drawable.qmark));
+//        answers = setAnswers(new String[]{"Answer 1", "Answer 2","Answer","Answer 3","Answer 4","Ans"});
+//        addQuestion(new Question("Question?", answers,1,2,5,R.drawable.qmark));
+//        answers = setAnswers(new String[]{"Answer 1", "Answer 2","Answer","Answer 3","Answer 4"});
+//        addQuestion(new Question("Question?", answers,1,2,5,R.drawable.qmark));
+//        answers = setAnswers(new String[]{"Answer 1", "Answer 2","Answer","Answer 3","Answer 4"});
+//        addQuestion(new Question("Question?", answers,1,2,5,R.drawable.qmark));
+//        answers = setAnswers(new String[]{"Answer 1", "Answer 2","Answer","Answer 3","Answer 4"});
+//        addQuestion(new Question("Question?", answers,1,2,5,R.drawable.qmark));
+//        answers = setAnswers(new String[]{"Answer 1", "Answer 2","Answer","Answer 3","Answer 4"});
+//        addQuestion(new Question("Question?", answers,1,2,5,R.drawable.qmark));
+
                               // question // list // correct // 0,1,2 poeni // slika
 
-        // Hard
+//         Hard
         answers = setAnswers("The Wolf Of Wall Street","Ride along","Sudden impact","The day the earth stood still");
+        addQuestion(new Question("\"Go ahead, make my day.\"",
+                answers,3,1,5,0));
+
+        answers = setAnswers(new String[]{"Sudden impact"});
         addQuestion(new Question("\"Go ahead, make my day.\"",
                 answers,3,2,5,0));
 
         answers = setAnswers("The good, the bad, the ugly","Little women","12 Angry men","Gone with the wind");
+        addQuestion(new Question("\"Frankly, my dear, I don't give a damn.\"",
+                answers,4,1,5,0));
+
+        answers = setAnswers(new String[]{"Gone with the wind","GWTW"});
         addQuestion(new Question("\"Frankly, my dear, I don't give a damn.\"",
                 answers,4,2,5,0));
 

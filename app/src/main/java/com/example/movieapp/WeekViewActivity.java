@@ -1,7 +1,6 @@
 package com.example.movieapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -13,10 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -34,7 +29,6 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_view);
-        load();
         init();
         setWeekView();
     }
@@ -86,32 +80,8 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     public void newEventAction(View view) {
-        save();
         startActivity(new Intent(this, EventEditActivity.class));
     }
 
-    public void save() {
-        SharedPreferences sp = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        Gson gson= new Gson();
-        String json = gson.toJson(eventlist);
-        editor.putString(EVENTS,json);
-        editor.apply();
-    }
-
-    public void load() {
-        SharedPreferences sp = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        Gson gson= new Gson();
-        String json = sp.getString(EVENTS,null);
-        Type type = new TypeToken<ArrayList<Event>>() {}.getType();
-        eventlist = gson.fromJson(json,type);
-        if(eventlist == null) {
-            eventlist = new ArrayList<>();
-        }
-    }
-
-    public void update() {
-
-    }
 
 }

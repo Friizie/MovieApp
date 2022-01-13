@@ -21,8 +21,17 @@ public class CalendarUtils {
         return date.format(formatter);
     }
 
+    public static String formattedDateDigits(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
+        return date.format(formatter);
+    }
+
     public static String formattedTime(LocalTime time) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        return time.format(formatter);
+    }
+    public static String formattedTimeHM(LocalTime time) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
         return time.format(formatter);
     }
 

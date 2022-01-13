@@ -65,6 +65,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.897">
 
+
+
             <Button
                 android:id="@+id/two"
                 android:layout_width="match_parent"
@@ -76,7 +78,8 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.34" />
+                app:layout_constraintVertical_bias="0.34"
+                android:visibility="visible"/>
 
             <Button
                 android:id="@+id/one"
@@ -89,7 +92,8 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.137" />
+                app:layout_constraintVertical_bias="0.137"
+                android:visibility="visible"/>
 
             <Button
                 android:id="@+id/three"
@@ -102,7 +106,8 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.543" />
+                app:layout_constraintVertical_bias="0.543"
+                android:visibility="visible"/>
 
             <Button
                 android:id="@+id/four"
@@ -115,7 +120,36 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.746" />
+                app:layout_constraintVertical_bias="0.746"
+                android:visibility="visible"/>
+
+            <EditText
+                android:id="@+id/inputAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Answer"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias=".3"
+                android:scrollbars="horizontal"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/submitAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias=".6"
+                android:visibility="gone"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

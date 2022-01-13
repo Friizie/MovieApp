@@ -7,13 +7,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:gravity="center">
 
-<!--        <TextView-->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:tabGravity="center"
+            app:tabTextColor="@color/white">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To Watch" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Watched" />
+        </com.google.android.material.tabs.TabLayout>
+        <!--        <TextView-->
 <!--            android:id="@+id/toWatch"-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="match_parent"-->
@@ -37,74 +55,94 @@
 <!--            android:clickable="true"-->
 <!--            android:focusable="true" />-->
 
-        <Button
-            android:id="@+id/toWatch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="To Watch"
-            android:background="@android:color/transparent"
-            android:textColor="@color/white"
-            />
-<!--    android:layout_marginEnd="5dp"    -->
-        <Button
-            android:id="@+id/watched"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Watched"
-            android:background="@android:color/transparent"
-            android:textColor="@color/white"
-            />
-<!--        android:layout_marginStart="5dp"-->
+
+<!--        <Button-->
+<!--            android:id="@+id/toWatch"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="To Watch"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:textColor="@color/white"-->
+<!--            />-->
+<!--&lt;!&ndash;    android:layout_marginEnd="5dp"    &ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/watched"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Watched"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:textColor="@color/white"-->
+<!--            />-->
+<!--&lt;!&ndash;        android:layout_marginStart="5dp"&ndash;&gt;-->
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="43dp"
-        >
-        <View
-            android:id="@+id/rectangle1"
-            android:layout_width="112dp"
-            android:layout_height="3dp"
-            android:background="@color/purple_500"
-            android:visibility="visible"
-            android:animateLayoutChanges="true"
-            />
-        <View
-            android:id="@+id/rectangle2"
-            android:layout_width="108dp"
-            android:layout_height="3dp"
-            android:background="@color/purple_500"
-            android:visibility="invisible"
-            android:animateLayoutChanges="true"/>
-    </LinearLayout>
+        android:layout_height="710dp" >
 
-    <LinearLayout
-        android:id="@+id/MContent"
-        android:layout_width="match_parent"
-        android:layout_height="681dp"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp"
-        app:layout_anchorGravity="center">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listRecycler2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+    </androidx.viewpager2.widget.ViewPager2>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="5dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginTop="43dp"-->
+<!--        >-->
+<!--        <View-->
+<!--            android:id="@+id/rectangle1"-->
+<!--            android:layout_width="112dp"-->
+<!--            android:layout_height="3dp"-->
+<!--            android:background="@color/purple_500"-->
+<!--            android:visibility="visible"-->
+<!--            android:animateLayoutChanges="true"-->
+<!--            />-->
+<!--        <View-->
+<!--            android:id="@+id/rectangle2"-->
+<!--            android:layout_width="108dp"-->
+<!--            android:layout_height="3dp"-->
+<!--            android:background="@color/purple_500"-->
+<!--            android:visibility="invisible"-->
+<!--            android:animateLayoutChanges="true"/>-->
+<!--    </LinearLayout>-->
+<!--    <TextView-->
+<!--        android:id="@+id/emptyListText"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:text="The list is empty"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginBottom="200dp"-->
+<!--        />-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/MContent"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="679dp"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_anchorGravity="center">-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/listRecycler"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="539dp"-->
+<!--            android:scrollbars="vertical" />-->
+<!--    </LinearLayout>-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/listRecycler2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:visibility="gone"/>-->
 <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--        android:layout_width="60dp"-->
 <!--        android:layout_height="60dp"-->
 <!--        android:layout_marginTop="600dp"-->
 <!--        android:layout_marginStart="320dp">-->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AddMovie"
         android:layout_width="wrap_content"
@@ -113,7 +151,11 @@
         tools:ignore="SpeakableTextPresentCheck"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="100dp">
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/cool_blue"
+        android:tint="@android:color/white"
+        app:tint="@android:color/white"
+        app:borderWidth="0dp">
 <!--        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.952"
@@ -140,6 +182,7 @@
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </com.google.android.material.bottomappbar.BottomAppBar>
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

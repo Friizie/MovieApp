@@ -8,8 +8,10 @@ import android.os.CountDownTimer;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class TriviaActivity extends AppCompatActivity {
-    Button b1, b2, b3, b4;
+    Button b1, b2, b3, b4,answerSubmit;
     TextView displayedQuestion, questionNum;
+    EditText answerInput;
     ImageView displayedImage;
     Trivia t;
     int questionIndex = -1, totalPoints = 0, difficulty = 0;
@@ -91,10 +94,34 @@ public class TriviaActivity extends AppCompatActivity {
                 }
             }
         });
+
+        answerSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(anifinished) {
+                    Answer2();
+                }
+            }
+        });
     }
+
+    private boolean checkInput(String input) {
+        if (isNextQuestion())
+            return getCurrentQuestion().getAnswers().contains(input.toLowerCase());
+        return false;
+    }
+
 
     // update function for updating screen information
     void update() {
+        if(difficulty==2) {
+            answerInput.setVisibility(View.VISIBLE);
+            answerSubmit.setVisibility(View.VISIBLE);
+            b1.setVisibility(View.GONE);
+            b2.setVisibility(View.GONE);
+            b3.setVisibility(View.GONE);
+            b4.setVisibility(View.GONE);
+        }
         if(questionIndex<1) timer = 0; else timer = 1000;
         // https://stackoverflow.com/questions/18712955/i-want-to-change-the-color-of-a-button-for-a-few-seconds-than-change-it-back
         new CountDownTimer(timer, 50) {
@@ -103,10 +130,16 @@ public class TriviaActivity extends AppCompatActivity {
             }
             @Override
             public void onFinish() {
-                b1.setBackgroundColor(DEFAULT_COLOUR);
-                b2.setBackgroundColor(DEFAULT_COLOUR);
-                b3.setBackgroundColor(DEFAULT_COLOUR);
-                b4.setBackgroundColor(DEFAULT_COLOUR);
+                if(difficulty==2){
+                    answerInput.setText("");
+                    answerInput.setBackgroundColor(Color.TRANSPARENT);
+                }
+                else {
+                    b1.setBackgroundColor(DEFAULT_COLOUR);
+                    b2.setBackgroundColor(DEFAULT_COLOUR);
+                    b3.setBackgroundColor(DEFAULT_COLOUR);
+                    b4.setBackgroundColor(DEFAULT_COLOUR);
+                }
 
                 if (isNextQuestion()) {
                     displayedQuestion.setText(getCurrentQuestion().getQuestion());
@@ -124,11 +157,12 @@ public class TriviaActivity extends AppCompatActivity {
                     }
                     String num = (questionIndex + 1) + "/" + NUM_OF_QUESTIONS;
                     questionNum.setText(num);
-
+                    if(difficulty != 2){
                     b1.setText(getCurrentQuestion().getAnswers().get(0));
                     b2.setText(getCurrentQuestion().getAnswers().get(1));
                     b3.setText(getCurrentQuestion().getAnswers().get(2));
                     b4.setText(getCurrentQuestion().getAnswers().get(3));
+                    }
 
                 }
                 anifinished = true;
@@ -141,6 +175,8 @@ public class TriviaActivity extends AppCompatActivity {
         displayedQuestion = (TextView) findViewById(R.id.questionTV);
         displayedImage = findViewById(R.id.imageIV);
         questionNum = findViewById(R.id.questionNum);
+        answerInput = findViewById(R.id.inputAnswer);
+        answerSubmit = findViewById(R.id.submitAnswer);
         navBarTrivia = (NavigationBarView) findViewById(R.id.BottomNavViewTrivia);
 
         navBarTrivia.setBackground(null);
@@ -176,6 +212,7 @@ public class TriviaActivity extends AppCompatActivity {
         return false;
     }
 
+
     // display if the picked answer was correct or not. Also go to next question.
     void Answer() {
         anifinished = false;
@@ -197,12 +234,37 @@ public class TriviaActivity extends AppCompatActivity {
                 case 2: b2.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
                 case 3: b3.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
                 case 4: b4.setBackgroundColor(CORRECT_ANSWER_COLOUR);break;
+
+                case 9: b1.setBackgroundColor(CORRECT_ANSWER_COLOUR);
+                        b2.setBackgroundColor(CORRECT_ANSWER_COLOUR);
+                        b3.setBackgroundColor(CORRECT_ANSWER_COLOUR);
+                        b4.setBackgroundColor(CORRECT_ANSWER_COLOUR); break;
                 default: break;
             }
             if (questionIndex == NUM_OF_QUESTIONS - 1) { finished(); return; }
             nextQuestion();
             update();
         }
+    }
+
+    void Answer2(){
+        anifinished = false;
+        if (isNextQuestion()) {
+            if (checkInput(answerInput.getText().toString())) {
+                answerInput.setBackgroundColor(CORRECT_ANSWER_COLOUR);
+                totalPoints += getCurrentQuestion().getPoints();
+                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+            } else {
+                answerInput.setBackgroundColor(SELECTED_COLOUR);
+                Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+            }
+        }
+        if (questionIndex == NUM_OF_QUESTIONS - 1) {
+            finished();
+            return;
+        }
+        nextQuestion();
+        update();
     }
 
     // get the right answer
