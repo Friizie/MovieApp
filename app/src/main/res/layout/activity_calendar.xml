@@ -10,21 +10,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="444dp"
+        android:layout_height="357dp"
         android:orientation="vertical">
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="2dp"
-            android:background="@null"
-            android:onClick="weeklyAction"
-            android:text="Weekly"
-            android:textColor="@color/white"
-            android:textSize="15sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -167,8 +154,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventListViewC"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="455dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="400dp"
         android:scrollbars="vertical" />
 
     <com.google.android.material.bottomappbar.BottomAppBar

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/search"
+        app:showAsAction="ifRoom"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:icon="@drawable/ic_search"
+        android:title="search"
+        android:label="search"
+        android:hint="search"/>
+
+
+    <item
+        android:id="@+id/sortMenu"
+        android:orderInCategory="100"
+        android:title="Sort"
+        app:showAsAction="never">
+        <menu>
+<!--            <item-->
+<!--                android:id="@+id/sortByDefaultAsc"-->
+<!--                android:title="Default Asc"/>-->
+<!--            <item-->
+<!--                android:id="@+id/sortByDefaultDesc"-->
+<!--                android:title="Default Desc"/>-->
+<!--            <item-->
+<!--                android:id="@+id/sortByTitleAsc"-->
+<!--                android:title="Title Asc"/>-->
+<!--            <item-->
+<!--                android:id="@+id/sortByTitleDesc"-->
+<!--                android:title="Title Desc"/>-->
+<!--            <item-->
+<!--                android:id="@+id/sortByYearAsc"-->
+<!--                android:title="Year Asc"/>-->
+<!--            <item-->
+<!--                android:id="@+id/sortByYearDesc"-->
+<!--                android:title="Year Desc"/>-->
+<!--            <item-->
+<!--                android:id="@+id/sortByMinAsc"-->
+<!--                android:title="Minutes Asc"/>-->
+<!--            <item-->
+<!--                android:id="@+id/sortByMinDesc"-->
+<!--                android:title="Minutes Desc"/>-->
+<!--            <item-->
+<!--                android:id="@+id/sortByDate"-->
+<!--                android:title="Date"/>-->
+            <item
+                android:id="@+id/sortByDefault"
+                android:title="Default"/>
+            <item
+                android:id="@+id/sortByTitle"
+                android:title="Title"/>
+
+            <item
+                android:id="@+id/sortByYear"
+                android:title="Year"/>
+            <item
+                android:id="@+id/sortByMin"
+                android:title="Minutes"/>
+            <item
+                android:id="@+id/sortByRating"
+                android:title="Rating"/>
+<!--            <item-->
+<!--                android:id="@+id/sortByDate"-->
+<!--                android:title="Date"/>-->
+        </menu>
+    </item>
+<!--    <item-->
+<!--        android:id="@+id/delete_data"-->
+<!--        android:title="Delete all Data"-->
+<!--        app:showAsAction="never">-->
+<!--    </item>-->
+
+
+<!--    <item-->
+<!--        android:id="@+id/menu_new_content_twitter"-->
+<!--        android:orderInCategory="200"-->
+<!--        android:title=""-->
+<!--        app:showAsAction="never" />-->
+</menu>

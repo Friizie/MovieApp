@@ -40,10 +40,6 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
         setContentView(R.layout.activity_calendar);
 
         db = new Database(this);
-//        db.deleteAllData();
-//        for (Event e : eventlist) {
-//            db.add(e.getName(), e.getTime().toString(), e.getDate().toString());
-//        }
         navInit();
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
         monthYearText = findViewById(R.id.monthYearTV);
@@ -96,10 +92,6 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
 
     }
 
-    public void weeklyAction(View view) {
-        startActivity(new Intent(this, WeekViewActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-    }
     public void newEventAction(View view) {
         startActivity(new Intent(this, EventEditActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
@@ -144,6 +136,7 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
             public void onClick(View view, int position) {
                 startActivity(new Intent(getApplicationContext(), EventInfo.class)
                         .putExtra("name", eventlist.get(position).getName())
+                        .putExtra("date", eventlist.get(position).getDateAndTime())
                         .putExtra("id", eventlist.get(position).getId())
                         .putExtra("index",position)
                         .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));

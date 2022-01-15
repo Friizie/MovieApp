@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="In this trivia you will answer x questions.\nGood luck!"
+            android:text="In this trivia you will answer 10 questions.\nGood luck!"
             android:gravity="center"
             android:layout_marginBottom="75dp"
             android:textSize="21sp"

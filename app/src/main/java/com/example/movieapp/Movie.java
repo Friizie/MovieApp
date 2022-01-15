@@ -107,7 +107,7 @@ public class Movie implements Parcelable, Comparable<Movie>  {
     String convertMinToHrs() {
         int h =  this.min / 60;
         int m = this.min % 60;
-        return h+":"+m;
+        return h+"H"+":"+m+"m";
     }
     int convertHrsToMin(String H){
         String[] time=H.split(":");

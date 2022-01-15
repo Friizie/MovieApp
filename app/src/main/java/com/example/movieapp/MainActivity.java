@@ -14,6 +14,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppCompatDelegate.setDefaultNightMode(androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES);
         init();
     }
 
@@ -93,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
         search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
 
-
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -124,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
             ListFragment1.adapter.filter(filter_list);
         else
             ListFragment2.adapter.filter(filter_list);
-
     }
+
     @SuppressLint("NonConstantResourceId")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -133,8 +134,7 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.sortMenu){
             return super.onOptionsItemSelected(item);
         }
-//        String newTitle = item.getTitle().toString().split(" ")[0] + ((!asc) ? " ↑" : " ↓");
-//        item.setTitle(newTitle);
+
         comparator = new Comparator<Movie>() {
             @Override
             public int compare(Movie o1, Movie o2) {
@@ -219,8 +219,6 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.mHome: break;
                     case R.id.mCalendar:
-//                        startActivity(new Intent(MainActivity.this, CalendarActivity.class)
-//                                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         startActivity(new Intent(MainActivity.this, CalendarActivity.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                         break;
@@ -305,6 +303,7 @@ public class MainActivity extends AppCompatActivity {
             String info = c.getString(c.getColumnIndex("info"));
             double rating = c.getDouble(c.getColumnIndex("rating"));
             String date_added = c.getString(c.getColumnIndex("date_added"));
+            rating = Double.parseDouble(String.format("%.1f", rating));
             m = new Movie();
             m.setId(id); m.setTitle(title);
             m.setYear(year); m.setMin(min);
@@ -326,6 +325,7 @@ public class MainActivity extends AppCompatActivity {
             String info = c.getString(c.getColumnIndex("info"));
             double rating = c.getDouble(c.getColumnIndex("rating"));
             String date_added = c.getString(c.getColumnIndex("date_added"));
+            rating = Double.parseDouble(String.format("%.1f", rating));
             m = new Movie();
             m.setId(id); m.setTitle(title);
             m.setYear(year); m.setMin(min);

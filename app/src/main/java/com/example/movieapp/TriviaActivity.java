@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -107,7 +106,9 @@ public class TriviaActivity extends AppCompatActivity {
 
     private boolean checkInput(String input) {
         if (isNextQuestion())
-            return getCurrentQuestion().getAnswers().contains(input.toLowerCase());
+            return getCurrentQuestion().getAnswers().contains(input.toLowerCase()
+                    .replaceAll("  +"," ")
+                    .replaceAll("^ +","").replaceAll(" +$",""));
         return false;
     }
 
@@ -123,7 +124,6 @@ public class TriviaActivity extends AppCompatActivity {
             b4.setVisibility(View.GONE);
         }
         if(questionIndex<1) timer = 0; else timer = 1000;
-        // https://stackoverflow.com/questions/18712955/i-want-to-change-the-color-of-a-button-for-a-few-seconds-than-change-it-back
         new CountDownTimer(timer, 50) {
             @Override
             public void onTick(long arg0) {
@@ -253,10 +253,9 @@ public class TriviaActivity extends AppCompatActivity {
             if (checkInput(answerInput.getText().toString())) {
                 answerInput.setBackgroundColor(CORRECT_ANSWER_COLOUR);
                 totalPoints += getCurrentQuestion().getPoints();
-                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
             } else {
                 answerInput.setBackgroundColor(SELECTED_COLOUR);
-                Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
+                answerInput.setText(getCurrentQuestion().getAnswers().get(0).toUpperCase());
             }
         }
         if (questionIndex == NUM_OF_QUESTIONS - 1) {

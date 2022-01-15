@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:minWidth="50dp"
+    android:minHeight="50dp">
 
     <TextView
         android:id="@+id/textView11"
@@ -16,75 +18,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.077" />
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873">
+
     <Button
-        android:id="@+id/save_data_button"
+        android:id="@+id/save_edit_data_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
         android:text="Save"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.800
-"
+        app:layout_constraintHorizontal_bias="0.754"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873" />
+        app:layout_constraintTop_toBottomOf="@+id/editRating"
+        app:layout_constraintVertical_bias="0.477" />
 
     <Button
-        android:id="@+id/cancel_data_button"
+        android:id="@+id/cancel_edit_data_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
         android:text="Cancel"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--    <EditText-->
-<!--        android:id="@+id/enterTitle"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="29dp"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="textPersonName"-->
-<!--        android:text=""-->
-<!--        android:hint="Title"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.535"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/textView11"-->
-<!--        app:layout_constraintVertical_bias="0.083" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/enterYear"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="number"-->
-<!--        android:text=""-->
-<!--        android:hint="Year"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.609"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/enterTitle"-->
-<!--        app:layout_constraintVertical_bias="0.034" />-->
+        app:layout_constraintTop_toBottomOf="@+id/editRating"
+        app:layout_constraintVertical_bias="0.477" />
 
     <EditText
-        android:id="@+id/enterTitle"
+        android:id="@+id/editEnterTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -99,7 +65,7 @@
         app:layout_constraintVertical_bias="0.09" />
 
     <EditText
-        android:id="@+id/enterYear"
+        android:id="@+id/editEnterYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -110,23 +76,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterTitle"
+        app:layout_constraintTop_toBottomOf="@+id/editEnterTitle"
         app:layout_constraintVertical_bias="0.025" />
 
     <TextView
-        android:id="@+id/additional"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Additional ↓"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/enterTitle"
-        app:layout_constraintVertical_bias="0.025" />
-
-    <TextView
-        android:id="@+id/enterGenres"
+        android:id="@+id/editGenres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -137,12 +91,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterMinutes"
+        app:layout_constraintTop_toBottomOf="@+id/editEnterMinutes"
         app:layout_constraintVertical_bias="0.027"
         tools:scrollbars="vertical" />
 
     <EditText
-        android:id="@+id/enterMinutes"
+        android:id="@+id/editEnterMinutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -153,11 +107,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterYear"
+        app:layout_constraintTop_toBottomOf="@+id/editEnterYear"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/enterInfo"
+        android:id="@+id/editInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -171,11 +125,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterGenres"
+        app:layout_constraintTop_toBottomOf="@+id/editGenres"
         app:layout_constraintVertical_bias="0.032" />
 
     <EditText
-        android:id="@+id/enterRating"
+        android:id="@+id/editRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -185,11 +139,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterInfo"
+        app:layout_constraintTop_toBottomOf="@+id/editInfo"
         app:layout_constraintVertical_bias="0.045" />
 
     <RatingBar
-        android:id="@+id/enterRatingBar"
+        android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
@@ -203,8 +157,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterRating"
+        app:layout_constraintTop_toBottomOf="@+id/editRating"
         app:layout_constraintVertical_bias="0.035" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

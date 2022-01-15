@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/emptyListText2"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:text="The list is empty"
+        android:gravity="center"
+        android:layout_marginBottom="200dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/MContent"
+        android:layout_width="match_parent"
+        android:layout_height="679dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        app:layout_anchorGravity="center">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listRecycler2"
+            android:layout_width="match_parent"
+            android:layout_height="539dp"
+            android:scrollbars="vertical" />
+    </LinearLayout>
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/AddMovie2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/ic_add"-->
+<!--        tools:ignore="SpeakableTextPresentCheck"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_marginEnd="@dimen/fab_margin"-->
+<!--        android:layout_marginBottom="100dp"-->
+<!--        android:backgroundTint="#0098B3"-->
+<!--        android:tint="@android:color/white"-->
+<!--        app:tint="@android:color/white"-->
+<!--        app:borderWidth="0dp">-->
+<!--    </com.google.android.material.floatingactionbutton.FloatingActionButton>-->
+<!--    <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--        android:id="@+id/BottomBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom">-->
+
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:id="@+id/BottomNavView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginStart="0dp"-->
+<!--            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"-->
+<!--            app:menu="@menu/bottom_nav_menu">-->
+
+<!--        </com.google.android.material.bottomnavigation.BottomNavigationView>-->
+
+<!--    </com.google.android.material.bottomappbar.BottomAppBar>-->
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

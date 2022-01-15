@@ -24,6 +24,7 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:ems="10"
+        android:textColor="@color/white"
         android:inputType="text"/>
 
     <TextView
@@ -47,6 +48,27 @@
         android:textSize="20sp"
         android:textAlignment="center"
         android:textColor="@color/white"/>
+    <CheckBox
+        android:id="@+id/weeklyCheck"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="Weekly"/>
+
+    <EditText
+        android:id="@+id/weeklyText"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:ems="10"
+        android:hint="Num of Weeks"
+        android:textColor="@color/white"
+        android:inputType="number"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:layout_marginTop="20dp"
